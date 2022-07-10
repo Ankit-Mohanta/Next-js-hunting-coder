@@ -1,6 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 
+//Find the file corresponding to the slug step 1
+//populate them inside the page
 const Slug = () => {
     const router = useRouter();
     // console.log(router.query);
