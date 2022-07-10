@@ -6,7 +6,14 @@ const Slug = () => {
     // console.log(router.query);
     const {slug} = router.query;
   return (
-    <div>{slug}</div>
+    <div>
+      <h1>
+        Title of the page {slug}
+      </h1>
+      <div>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, ea dolorum? Debitis minus ea et nulla quod quidem, molestiae dicta eum, dolorem, modi impedit. Sequi minus laborum aliquid impedit modi.100
+      </div>
+    </div>
   )
 }
 

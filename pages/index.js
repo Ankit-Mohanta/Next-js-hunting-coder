@@ -25,7 +25,7 @@ export default function Home() {
         <p className={styles.description}>
           A blog for hunting coders by a hunting coder
         </p>
-        <h2>Popular blogs</h2>
+        <h2>Latest blogs</h2>
         <div className="blogs">
           <div className="blogItem">
             <h1>How to learn javascript in 2022</h1>
