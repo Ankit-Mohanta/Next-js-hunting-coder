@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 //Find the file corresponding to the slug step 1
 //populate them inside the page
 const Slug = () => {
-    const router = useRouter();
-    // console.log(router.query);
+  const router = useRouter();
+  const [blog,setBlog] = useState([]);
+  useEffect(() =>{
+    if (!router.isReady) return;
     const {slug} = router.query;
+    fetch(`http://localhost:3000/api/getblog?slug=${slug}`).then((a)=>{
+      return a.json();
+    }).then((data)=>{
+      setBlog(data);
+    })
+  },[router.isReady])
+    
+    // console.log(router.query);
+    
   return (
     <div>
       <h1>
-        Title of the page {slug}
+        {blog && blog.slug}
       </h1>
       <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, ea dolorum? Debitis minus ea et nulla quod quidem, molestiae dicta eum, dolorem, modi impedit. Sequi minus laborum aliquid impedit modi.100
+      {blog && blog.content}
       </div>
     </div>
   )
