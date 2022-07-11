@@ -4,15 +4,10 @@ import Link from 'next/link'
 
 //Collect all the files from blogdata directory step 1
 //Itrate through them and display them step 2
-const Blog = () => {
-  const [blogs,setBlogs] = useState([]);
-  useEffect(()=>{
-    fetch("http://localhost:3000/api/blogs").then((a)=>{
-      return a.json();
-    }).then((data)=>{
-      setBlogs(data);
-    })
-  },[])
+const Blog = (props) => {
+
+  const [blogs,setBlogs] = useState(props.myprops);
+  // console.log(props);
   return (
     <div>
       <main className={styles.main}>
@@ -32,6 +27,13 @@ const Blog = () => {
         </main>
     </div>
   )
+}
+export const getServerSideProps = async (context) =>{
+  let data = await fetch('http://localhost:3000/api/blogs');
+  let myprops = await data.json();
+  return {
+    props:{myprops},//will be passed to the page component as props
+  }
 }
 
 export default Blog
